@@ -13,7 +13,7 @@ import org.slf4j.Logger;
  * @author Ceki G&uuml;lc&uuml;
  */
 public class BungeecordLoggerFactory implements ILoggerFactory {
-    // key: name (String), value: a JDK14LoggerAdapter;
+  // key: name (String), value: a JDK14LoggerAdapter;
   ConcurrentMap<String, Logger> loggerMap;
 
   public BungeecordLoggerFactory() {
@@ -38,7 +38,8 @@ public class BungeecordLoggerFactory implements ILoggerFactory {
     Logger slf4jLogger = loggerMap.get(name);
     if (slf4jLogger != null) return slf4jLogger;
 
-    java.util.logging.Logger julLogger = java.util.logging.Logger.getLogger(name);
+    // In case it has *just* been added
+    java.util.logging.Logger julLogger = FakePluginLogger.getLogger(name);
     Logger newInstance = new BungeecordLoggerAdapter(julLogger);
     Logger oldInstance = loggerMap.putIfAbsent(name, newInstance);
     return oldInstance == null ? newInstance : oldInstance;
