@@ -1,3 +1,10 @@
+Version 0.1.1
+-------------
+
+\* Changed groupId to the newer `team.aura_dev.lib.slf4j-plugin.{bungeecord|spigot}` (Old artifacts have been deleted).  
+\* Root project won't build anything anymore.  
+
+
 Version 0.1.0
 -------------
 
