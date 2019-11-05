@@ -3,6 +3,7 @@
 ![Current Version](https://badge.fury.io/gh/AuraDevelopmentTeam%2Fslf4j-plugin.svg)
 [![Build Status](https://gitlab.aura-dev.team/AuraDev/slf4j-plugin/badges/master/build.svg)](https://gitlab.aura-dev.team/AuraDev/slf4j-plugin/pipelines)
 [![Coverage Report](https://gitlab.aura-dev.team/AuraDev/slf4j-plugin/badges/master/coverage.svg)](https://gitlab.aura-dev.team/AuraDev/slf4j-plugin/pipelines)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/95e8a2fe7c7f47fd8b12462012c4135e)](https://www.codacy.com/manual/AuraDevelopmentTeam/slf4j-plugin?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AuraDevelopmentTeam/slf4j-plugin&amp;utm_campaign=Badge_Grade)
 [![License](https://img.shields.io/github/license/AuraDevelopmentTeam/slf4j-plugin.svg)](https://github.com/AuraDevelopmentTeam/slf4j-plugin/blob/master/LICENSE)
 
 A SLF4J logging implementation for the Bungeecord and Bukkit/Spigot platforms.
