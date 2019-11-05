@@ -1,5 +1,7 @@
 apply from: "../GradleCommon/common.gradle"
 
+archivesBaseName += "-${rootProject.slf4j_version}"
+
 repositories {
     // Additional repositories
 }
