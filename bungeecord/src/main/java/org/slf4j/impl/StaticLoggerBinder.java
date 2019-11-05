@@ -19,7 +19,7 @@ public class StaticLoggerBinder implements LoggerFactoryBinder {
   public static String REQUESTED_API_VERSION = "@slf4j_version@"; // !final
 
   // TODO
-  private static final String loggerFactoryClassStr = Object.class.getName();
+  private static final String loggerFactoryClassStr = BungeecordLoggerFactory.class.getName();
 
   /** The unique instance of this class. */
   private static final StaticLoggerBinder SINGLETON = new StaticLoggerBinder();
@@ -40,8 +40,7 @@ public class StaticLoggerBinder implements LoggerFactoryBinder {
   private final ILoggerFactory loggerFactory;
 
   private StaticLoggerBinder() {
-    // TODO
-    loggerFactory = null;
+    loggerFactory = new BungeecordLoggerFactory();
   }
 
   public ILoggerFactory getLoggerFactory() {
