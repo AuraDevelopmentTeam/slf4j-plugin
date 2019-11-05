@@ -20,8 +20,7 @@ import org.slf4j.spi.LocationAwareLogger;
  * @author Ceki G&uuml;lc&uuml;
  * @author Peter Royal
  */
-public final class SpigotLoggerAdapter extends MarkerIgnoringBase
-    implements LocationAwareLogger {
+public final class SpigotLoggerAdapter extends MarkerIgnoringBase implements LocationAwareLogger {
   private static final long serialVersionUID = 8583671528939800176L;
 
   final transient java.util.logging.Logger logger;
@@ -547,7 +546,8 @@ public final class SpigotLoggerAdapter extends MarkerIgnoringBase
 
     Throwable t = event.getThrowable();
     if (ft.getThrowable() != null) {
-      t = ft.getThrowable();
+      // ??? Taken from the original. No idea why that code is like that...
+      // t = ft.getThrowable();
       throw new IllegalStateException("fix above code");
     }
 

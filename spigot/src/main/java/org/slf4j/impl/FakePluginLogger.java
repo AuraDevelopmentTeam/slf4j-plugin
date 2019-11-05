@@ -1,11 +1,11 @@
 package org.slf4j.impl;
 
-import org.bukkit.Bukkit;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
+import org.bukkit.Bukkit;
 
 /**
  * Fake plugin logger that tries to mimic the behavior of

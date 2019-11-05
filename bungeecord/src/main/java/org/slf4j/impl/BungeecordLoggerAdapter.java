@@ -547,7 +547,8 @@ public final class BungeecordLoggerAdapter extends MarkerIgnoringBase
 
     Throwable t = event.getThrowable();
     if (ft.getThrowable() != null) {
-      t = ft.getThrowable();
+      // ??? Taken from the original. No idea why that code is like that...
+      // t = ft.getThrowable();
       throw new IllegalStateException("fix above code");
     }
 
