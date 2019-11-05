@@ -19,7 +19,7 @@ public class FakePluginLogger extends Logger {
   private static final ConcurrentMap<String, FakePluginLogger> loggerMap =
       new ConcurrentHashMap<>();
 
-  private final String pluginName;
+  private final String loggerPrefix;
 
   public static FakePluginLogger getLogger(String pluginName) {
     FakePluginLogger logger = loggerMap.get(pluginName);
@@ -34,14 +34,14 @@ public class FakePluginLogger extends Logger {
   protected FakePluginLogger(String pluginName) {
     super(pluginName, null);
 
-    this.pluginName = "[" + pluginName + "] ";
+    loggerPrefix = pluginName.isEmpty()? "" : "[" + pluginName + "] ";
 
     setParent(ProxyServer.getInstance().getLogger());
   }
 
   @Override
   public void log(LogRecord logRecord) {
-    logRecord.setMessage(pluginName + logRecord.getMessage());
+    logRecord.setMessage(loggerPrefix + logRecord.getMessage());
 
     super.log(logRecord);
   }
