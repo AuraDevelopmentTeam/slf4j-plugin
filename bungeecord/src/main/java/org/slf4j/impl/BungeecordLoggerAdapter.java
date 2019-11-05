@@ -24,6 +24,9 @@ public final class BungeecordLoggerAdapter extends MarkerIgnoringBase
     implements LocationAwareLogger {
   private static final long serialVersionUID = 8583671528939800176L;
 
+  private static final String SELF = BungeecordLoggerAdapter.class.getName();
+  private static final String SUPER = MarkerIgnoringBase.class.getName();
+
   private final transient java.util.logging.Logger logger;
 
   // WARN: JDK14LoggerAdapter constructor should have only package access so
@@ -451,9 +454,6 @@ public final class BungeecordLoggerAdapter extends MarkerIgnoringBase
     fillCallerData(callerFQCN, record);
     logger.log(record);
   }
-
-  static String SELF = BungeecordLoggerAdapter.class.getName();
-  static String SUPER = MarkerIgnoringBase.class.getName();
 
   /**
    * Fill in caller data if possible.
