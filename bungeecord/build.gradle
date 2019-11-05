@@ -1,5 +1,7 @@
 apply from: "../GradleCommon/common.gradle"
 
+import org.apache.tools.ant.filters.ReplaceTokens
+
 archivesBaseName += "-${rootProject.slf4j_version}"
 
 repositories {
@@ -8,4 +10,10 @@ repositories {
 
 dependencies {
     compile "org.slf4j:slf4j-api:${rootProject.slf4j_version}"
+}
+
+processSources {
+    filter (ReplaceTokens, tokens: [
+        "slf4jVersion": rootProject.slf4j_version
+    ])
 }
