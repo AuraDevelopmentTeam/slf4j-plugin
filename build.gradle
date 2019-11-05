@@ -31,3 +31,7 @@ tasks.withType(Upload) {
 tasks.withType(PublishArtifact) {
     onlyIf { false }
 }
+
+tasks.withType(Sign) {
+    onlyIf { false }
+}
