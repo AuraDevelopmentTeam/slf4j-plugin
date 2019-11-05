@@ -1,3 +1,9 @@
+Version 1.0.1
+-------------
+
+\* Fix build issue for real this time!  
+
+
 Version 1.0.0
 -------------
 
