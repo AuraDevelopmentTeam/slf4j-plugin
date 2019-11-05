@@ -2,8 +2,6 @@ apply from: "../GradleCommon/common.gradle"
 
 import org.apache.tools.ant.filters.ReplaceTokens
 
-archivesBaseName += "-${rootProject.slf4j_version}"
-
 repositories {
     // Additional repositories
 }
@@ -16,4 +14,8 @@ processSources {
     filter (ReplaceTokens, tokens: [
         "slf4jVersion": rootProject.slf4j_version
     ])
+}
+
+jar {
+    classifier = rootProject.slf4j_version
 }
