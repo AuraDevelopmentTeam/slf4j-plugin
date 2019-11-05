@@ -1,0 +1,10 @@
+language: java
+dist: trusty
+jdk:
+  - oraclejdk8
+  - openjdk8
+git:
+  depth: false
+
+install: "./gradlew assemble --refresh-dependencies"
+script:  "./gradlew build --refresh-dependencies"
