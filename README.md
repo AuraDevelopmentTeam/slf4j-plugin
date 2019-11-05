@@ -57,7 +57,7 @@ the appropriate edition for your platform and `{version}` with the appropriate v
 
 <dependencies>
     <dependency>
-        <groupId>dev.aura.lib.slf4j-plugin.{bungeecord|spigot}</groupId>
+        <groupId>team.aura_dev.lib.slf4j-plugin.{bungeecord|spigot}</groupId>
         <artifactId>slf4j-plugin-{bungeecord|spigot}</artifactId>
         <version>{version}</version>
 				<classifier>1.7.25</classifier>
@@ -78,7 +78,7 @@ repositories {
 }
 
 dependencies {
-    compile "dev.aura.lib.slf4j-plugin.{bungeecord|spigot}:slf4j-plugin-{bungeecord|spigot}:{version}:1.7.25"
+    compile "team.aura_dev.lib.slf4j-plugin.{bungeecord|spigot}:slf4j-plugin-{bungeecord|spigot}:{version}:1.7.25"
 }
 ```
 
