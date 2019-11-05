@@ -7,3 +7,27 @@ repositories {
 dependencies {
     // Additional dependencies
 }
+
+processSources {
+    onlyIf { false }
+}
+
+processResources {
+    onlyIf { false }
+}
+
+tasks.withType(JavaCompile) {
+    onlyIf { false }
+}
+
+tasks.withType(Jar) {
+    onlyIf { false }
+}
+
+tasks.withType(Upload) {
+    onlyIf { false }
+}
+
+tasks.withType(PublishArtifact) {
+    onlyIf { false }
+}
