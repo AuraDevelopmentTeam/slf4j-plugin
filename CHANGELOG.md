@@ -1,3 +1,10 @@
+Version 1.0.0
+-------------
+
+\* Use proper version placeholder.  
+\* This is a preliminary release. If it works as is, it will be released without code changes as 1.0.0.  
+
+
 Version 0.1.2
 -------------
 
