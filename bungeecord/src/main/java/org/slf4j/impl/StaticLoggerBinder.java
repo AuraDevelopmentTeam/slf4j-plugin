@@ -18,7 +18,6 @@ public class StaticLoggerBinder implements LoggerFactoryBinder {
   // to avoid constant folding by the compiler, this field must *not* be final
   public static String REQUESTED_API_VERSION = "@slf4j_version@"; // !final
 
-  // TODO
   private static final String loggerFactoryClassStr = BungeecordLoggerFactory.class.getName();
 
   /** The unique instance of this class. */

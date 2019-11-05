@@ -1,14 +1,15 @@
 package org.slf4j.impl;
 
+import org.bukkit.Bukkit;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
-import net.md_5.bungee.api.ProxyServer;
 
 /**
  * Fake plugin logger that tries to mimic the behavior of
- * https://github.com/SpigotMC/BungeeCord/blob/master/api/src/main/java/net/md_5/bungee/api/plugin/PluginLogger.java
+ * https://hub.spigotmc.org/stash/projects/SPIGOT/repos/bukkit/browse/src/main/java/org/bukkit/plugin/PluginLogger.java
  * as close as possible.
  *
  * <p>In addition also caches its instances.
@@ -36,7 +37,8 @@ public class FakePluginLogger extends Logger {
 
     this.pluginName = "[" + pluginName + "] ";
 
-    setParent(ProxyServer.getInstance().getLogger());
+    setParent(Bukkit.getLogger());
+    setLevel(Level.ALL);
   }
 
   @Override

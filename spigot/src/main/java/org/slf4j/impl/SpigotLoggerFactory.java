@@ -7,16 +7,16 @@ import org.slf4j.Logger;
 
 /**
  * BungeecordLoggerFactory is an implementation of {@link ILoggerFactory} returning the
- * appropriately named {@link BungeecordLoggerAdapter} instance.
+ * appropriately named {@link SpigotLoggerAdapter} instance.
  *
  * @author Yannick Schinko
  * @author Ceki G&uuml;lc&uuml;
  */
-public class BungeecordLoggerFactory implements ILoggerFactory {
-  // key: name (String), value: a BungeecordLoggerAdapter;
+public class SpigotLoggerFactory implements ILoggerFactory {
+  // key: name (String), value: a SpigotLoggerAdapter;
   ConcurrentMap<String, Logger> loggerMap;
 
-  public BungeecordLoggerFactory() {
+  public SpigotLoggerFactory() {
     loggerMap = new ConcurrentHashMap<String, Logger>();
   }
 
@@ -36,7 +36,7 @@ public class BungeecordLoggerFactory implements ILoggerFactory {
 
     // In case it has *just* been added
     java.util.logging.Logger julLogger = FakePluginLogger.getLogger(name);
-    Logger newInstance = new BungeecordLoggerAdapter(julLogger);
+    Logger newInstance = new SpigotLoggerAdapter(julLogger);
     Logger oldInstance = loggerMap.putIfAbsent(name, newInstance);
     return oldInstance == null ? newInstance : oldInstance;
   }
