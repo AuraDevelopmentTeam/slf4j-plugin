@@ -41,8 +41,8 @@ You can download all builds from:
 
 ### Adding it to your project
 
-You can easily use this library by including it as a maven dependency, as all releases get uploaded to our maven repository. (Replace `{version}` with the
-appropriate version!)
+You can easily use this library by including it as a maven dependency, as all releases get uploaded to our maven repository. (Replace `{bungeecord|spigot}` with
+the appropriate edition for your platform and `{version}` with the appropriate version!)
 
 #### Maven
 
@@ -57,8 +57,8 @@ appropriate version!)
 
 <dependencies>
     <dependency>
-        <groupId>dev.aura.lib.version</groupId>
-        <artifactId>VersionLib</artifactId>
+        <groupId>dev.aura.lib.slf4j-plugin.{bungeecord|spigot}</groupId>
+        <artifactId>slf4j-plugin-{bungeecord|spigot}-1.7.25</artifactId>
         <version>{version}</version>
         <scope>compile</scope>
     </dependency>
@@ -77,7 +77,7 @@ repositories {
 }
 
 dependencies {
-    compile "dev.aura.lib.version:VersionLib:{version}"
+    compile "dev.aura.lib.slf4j-plugin.{bungeecord|spigot}:slf4j-plugin-{bungeecord|spigot}-1.7.25:{version}"
 }
 ```
 
