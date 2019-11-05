@@ -24,6 +24,12 @@ public class StaticLoggerBinder implements LoggerFactoryBinder {
   private static final StaticLoggerBinder SINGLETON = new StaticLoggerBinder();
 
   /**
+   * The ILoggerFactory instance returned by the {@link #getLoggerFactory} method should always be
+   * the same object
+   */
+  private final ILoggerFactory loggerFactory;
+
+  /**
    * Return the singleton of this class.
    *
    * @return the StaticLoggerBinder singleton
@@ -31,12 +37,6 @@ public class StaticLoggerBinder implements LoggerFactoryBinder {
   public static final StaticLoggerBinder getSingleton() {
     return SINGLETON;
   }
-
-  /**
-   * The ILoggerFactory instance returned by the {@link #getLoggerFactory} method should always be
-   * the same object
-   */
-  private final ILoggerFactory loggerFactory;
 
   private StaticLoggerBinder() {
     loggerFactory = new BungeecordLoggerFactory();

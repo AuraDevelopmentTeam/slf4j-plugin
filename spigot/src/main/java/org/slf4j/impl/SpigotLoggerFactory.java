@@ -14,7 +14,7 @@ import org.slf4j.Logger;
  */
 public class SpigotLoggerFactory implements ILoggerFactory {
   // key: name (String), value: a SpigotLoggerAdapter;
-  ConcurrentMap<String, Logger> loggerMap;
+  private final ConcurrentMap<String, Logger> loggerMap;
 
   public SpigotLoggerFactory() {
     loggerMap = new ConcurrentHashMap<String, Logger>();

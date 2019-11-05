@@ -35,7 +35,7 @@ public class FakePluginLogger extends Logger {
   protected FakePluginLogger(String pluginName) {
     super(pluginName, null);
 
-    this.loggerPrefix = pluginName.isEmpty()? "" : "[" + pluginName + "] ";
+    this.loggerPrefix = pluginName.isEmpty() ? "" : "[" + pluginName + "] ";
 
     setParent(Bukkit.getLogger());
     setLevel(Level.ALL);

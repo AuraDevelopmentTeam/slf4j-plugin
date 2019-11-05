@@ -23,7 +23,7 @@ import org.slf4j.spi.LocationAwareLogger;
 public final class SpigotLoggerAdapter extends MarkerIgnoringBase implements LocationAwareLogger {
   private static final long serialVersionUID = 8583671528939800176L;
 
-  final transient java.util.logging.Logger logger;
+  private final transient java.util.logging.Logger logger;
 
   // WARN: JDK14LoggerAdapter constructor should have only package access so
   // that only JDK14LoggerFactory be able to create one.

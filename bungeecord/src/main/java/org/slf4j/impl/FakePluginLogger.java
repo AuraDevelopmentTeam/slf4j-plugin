@@ -34,7 +34,7 @@ public class FakePluginLogger extends Logger {
   protected FakePluginLogger(String pluginName) {
     super(pluginName, null);
 
-    loggerPrefix = pluginName.isEmpty()? "" : "[" + pluginName + "] ";
+    loggerPrefix = pluginName.isEmpty() ? "" : "[" + pluginName + "] ";
 
     setParent(ProxyServer.getInstance().getLogger());
   }

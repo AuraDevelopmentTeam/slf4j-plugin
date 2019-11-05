@@ -14,7 +14,7 @@ import org.slf4j.Logger;
  */
 public class BungeecordLoggerFactory implements ILoggerFactory {
   // key: name (String), value: a BungeecordLoggerAdapter;
-  ConcurrentMap<String, Logger> loggerMap;
+  private final ConcurrentMap<String, Logger> loggerMap;
 
   public BungeecordLoggerFactory() {
     loggerMap = new ConcurrentHashMap<String, Logger>();
