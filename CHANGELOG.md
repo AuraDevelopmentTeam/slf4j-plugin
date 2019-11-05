@@ -1,3 +1,12 @@
+Version 0.1.2
+-------------
+
+\* A logger with an empty name doesn't have the empty `[]` prefix anymore.
+\* Code cleanup.  
+\* Fixed errors during building.  
+\* This is a preliminary release. If it works as is, it will be released without code changes as 1.0.0.  
+
+
 Version 0.1.1
 -------------
 
