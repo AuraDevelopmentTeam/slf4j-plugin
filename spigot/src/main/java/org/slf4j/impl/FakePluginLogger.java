@@ -40,11 +40,18 @@ public class FakePluginLogger extends Logger {
     this.loggerPrefix = pluginName.isEmpty() ? "" : "[" + pluginName + "] ";
     consoleCommandSender = Bukkit.getConsoleSender();
 
+    setParent(Bukkit.getLogger());
     setLevel(Level.ALL);
   }
 
   @Override
   public void log(LogRecord logRecord) {
-    consoleCommandSender.sendMessage(loggerPrefix + logRecord.getMessage());
+    if (logRecord.getLevel() == Level.INFO) {
+      consoleCommandSender.sendMessage(loggerPrefix + logRecord.getMessage());
+    } else {
+      logRecord.setMessage(loggerPrefix + logRecord.getMessage());
+
+      super.log(logRecord);
+    }
   }
 }
