@@ -46,10 +46,12 @@ public class FakePluginLogger extends Logger {
 
   @Override
   public void log(LogRecord logRecord) {
+    final String logMessage = loggerPrefix + logRecord.getMessage();
+
     if (logRecord.getLevel() == Level.INFO) {
-      consoleCommandSender.sendMessage(loggerPrefix + logRecord.getMessage());
+      consoleCommandSender.sendMessage(logMessage);
     } else {
-      logRecord.setMessage(loggerPrefix + logRecord.getMessage());
+      logRecord.setMessage(logMessage);
 
       super.log(logRecord);
     }
