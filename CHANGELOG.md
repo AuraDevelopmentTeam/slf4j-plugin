@@ -1,3 +1,10 @@
+Version 1.1.0
+-------------
+
+\* Implemented workaround to fix logger not logging in color ([#1](https://github.com/AuraDevelopmentTeam/slf4j-plugin/issues/1), see
+[#2](https://github.com/AuraDevelopmentTeam/slf4j-plugin/issues/2) for improving this workaround).  
+
+
 Version 1.0.1
 -------------
 
