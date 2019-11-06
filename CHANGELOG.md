@@ -1,3 +1,9 @@
+Version 1.1.1
+-------------
+
+\* Code cleanup.   
+
+
 Version 1.1.0
 -------------
 
