@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import org.bukkit.Bukkit;
+import org.bukkit.command.ConsoleCommandSender;
 
 /**
  * Fake plugin logger that tries to mimic the behavior of
@@ -21,6 +22,7 @@ public class FakePluginLogger extends Logger {
       new ConcurrentHashMap<>();
 
   private final String loggerPrefix;
+  private final ConsoleCommandSender consoleCommandSender;
 
   public static FakePluginLogger getLogger(String pluginName) {
     FakePluginLogger logger = loggerMap.get(pluginName);
@@ -36,15 +38,13 @@ public class FakePluginLogger extends Logger {
     super(pluginName, null);
 
     this.loggerPrefix = pluginName.isEmpty() ? "" : "[" + pluginName + "] ";
+    consoleCommandSender = Bukkit.getConsoleSender();
 
-    setParent(Bukkit.getLogger());
     setLevel(Level.ALL);
   }
 
   @Override
   public void log(LogRecord logRecord) {
-    logRecord.setMessage(loggerPrefix + logRecord.getMessage());
-
-    super.log(logRecord);
+    consoleCommandSender.sendMessage(loggerPrefix + logRecord.getMessage());
   }
 }
