@@ -35,8 +35,8 @@ public class NukkitLoggerFactory implements ILoggerFactory {
     if (slf4jLogger != null) return slf4jLogger;
 
     // In case it has *just* been added
-    java.util.logging.Logger julLogger = FakePluginLogger.getLogger(name);
-    Logger newInstance = new NukkitLoggerAdapter(julLogger);
+    cn.nukkit.utils.Logger nukkitLogger = FakePluginLogger.getLogger(name);
+    Logger newInstance = new NukkitLoggerAdapter(nukkitLogger);
     Logger oldInstance = loggerMap.putIfAbsent(name, newInstance);
     return oldInstance == null ? newInstance : oldInstance;
   }

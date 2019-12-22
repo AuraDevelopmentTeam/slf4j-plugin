@@ -1,7 +1,9 @@
 include "GradleCommon"
 include "bungeecord"
+include "nukkit"
 include "spigot"
 
 rootProject.name = "slf4j-plugin"
 project(":bungeecord").name = "slf4j-plugin-bungeecord"
+project(":nukkit").name = "slf4j-plugin-nukkit"
 project(":spigot").name = "slf4j-plugin-spigot"

@@ -1,10 +1,8 @@
 package org.slf4j.impl;
 
-import java.util.logging.Level;
-import java.util.logging.LogRecord;
+import cn.nukkit.utils.LogLevel;
 import org.slf4j.Logger;
 import org.slf4j.Marker;
-import org.slf4j.event.EventConstants;
 import org.slf4j.event.LoggingEvent;
 import org.slf4j.helpers.FormattingTuple;
 import org.slf4j.helpers.MarkerIgnoringBase;
@@ -21,18 +19,14 @@ import org.slf4j.spi.LocationAwareLogger;
  * @author Peter Royal
  */
 public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements LocationAwareLogger {
-  private static final long serialVersionUID = 8583671528939800176L;
+  private static final long serialVersionUID = -1112953787988322156L;
 
   private static final String SELF = NukkitLoggerAdapter.class.getName();
-  private static final String SUPER = MarkerIgnoringBase.class.getName();
 
-  private final transient java.util.logging.Logger logger;
+  private final transient cn.nukkit.utils.Logger logger;
 
-  // WARN: JDK14LoggerAdapter constructor should have only package access so
-  // that only JDK14LoggerFactory be able to create one.
-  NukkitLoggerAdapter(java.util.logging.Logger logger) {
+  NukkitLoggerAdapter(cn.nukkit.utils.Logger logger) {
     this.logger = logger;
-    this.name = logger.getName();
   }
 
   /**
@@ -41,7 +35,7 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @return True if this Logger is enabled for level FINEST, false otherwise.
    */
   public boolean isTraceEnabled() {
-    return logger.isLoggable(Level.FINEST);
+    return false;
   }
 
   /**
@@ -50,9 +44,7 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param msg - the message object to be logged
    */
   public void trace(String msg) {
-    if (logger.isLoggable(Level.FINEST)) {
-      log(SELF, Level.FINEST, msg, null);
-    }
+    // Do nothing
   }
 
   /**
@@ -64,10 +56,7 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param arg the argument
    */
   public void trace(String format, Object arg) {
-    if (logger.isLoggable(Level.FINEST)) {
-      FormattingTuple ft = MessageFormatter.format(format, arg);
-      log(SELF, Level.FINEST, ft.getMessage(), ft.getThrowable());
-    }
+    // Do nothing
   }
 
   /**
@@ -81,10 +70,7 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param arg2 the second argument
    */
   public void trace(String format, Object arg1, Object arg2) {
-    if (logger.isLoggable(Level.FINEST)) {
-      FormattingTuple ft = MessageFormatter.format(format, arg1, arg2);
-      log(SELF, Level.FINEST, ft.getMessage(), ft.getThrowable());
-    }
+    // Do nothing
   }
 
   /**
@@ -97,10 +83,7 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param argArray an array of arguments
    */
   public void trace(String format, Object... argArray) {
-    if (logger.isLoggable(Level.FINEST)) {
-      FormattingTuple ft = MessageFormatter.arrayFormat(format, argArray);
-      log(SELF, Level.FINEST, ft.getMessage(), ft.getThrowable());
-    }
+    // Do nothing
   }
 
   /**
@@ -110,9 +93,7 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param t the exception (throwable) to log
    */
   public void trace(String msg, Throwable t) {
-    if (logger.isLoggable(Level.FINEST)) {
-      log(SELF, Level.FINEST, msg, t);
-    }
+    // Do nothing
   }
 
   /**
@@ -121,7 +102,7 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @return True if this Logger is enabled for level FINE, false otherwise.
    */
   public boolean isDebugEnabled() {
-    return logger.isLoggable(Level.FINE);
+    return true;
   }
 
   /**
@@ -130,9 +111,7 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param msg - the message object to be logged
    */
   public void debug(String msg) {
-    if (logger.isLoggable(Level.FINE)) {
-      log(SELF, Level.FINE, msg, null);
-    }
+    log(SELF, LogLevel.DEBUG, msg, null);
   }
 
   /**
@@ -144,10 +123,8 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param arg the argument
    */
   public void debug(String format, Object arg) {
-    if (logger.isLoggable(Level.FINE)) {
-      FormattingTuple ft = MessageFormatter.format(format, arg);
-      log(SELF, Level.FINE, ft.getMessage(), ft.getThrowable());
-    }
+    FormattingTuple ft = MessageFormatter.format(format, arg);
+    log(SELF, LogLevel.DEBUG, ft.getMessage(), ft.getThrowable());
   }
 
   /**
@@ -160,10 +137,8 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param arg2 the second argument
    */
   public void debug(String format, Object arg1, Object arg2) {
-    if (logger.isLoggable(Level.FINE)) {
-      FormattingTuple ft = MessageFormatter.format(format, arg1, arg2);
-      log(SELF, Level.FINE, ft.getMessage(), ft.getThrowable());
-    }
+    FormattingTuple ft = MessageFormatter.format(format, arg1, arg2);
+    log(SELF, LogLevel.DEBUG, ft.getMessage(), ft.getThrowable());
   }
 
   /**
@@ -175,10 +150,8 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param argArray an array of arguments
    */
   public void debug(String format, Object... argArray) {
-    if (logger.isLoggable(Level.FINE)) {
-      FormattingTuple ft = MessageFormatter.arrayFormat(format, argArray);
-      log(SELF, Level.FINE, ft.getMessage(), ft.getThrowable());
-    }
+    FormattingTuple ft = MessageFormatter.arrayFormat(format, argArray);
+    log(SELF, LogLevel.DEBUG, ft.getMessage(), ft.getThrowable());
   }
 
   /**
@@ -188,9 +161,7 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param t the exception (throwable) to log
    */
   public void debug(String msg, Throwable t) {
-    if (logger.isLoggable(Level.FINE)) {
-      log(SELF, Level.FINE, msg, t);
-    }
+    log(SELF, LogLevel.DEBUG, msg, t);
   }
 
   /**
@@ -199,7 +170,7 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @return True if this Logger is enabled for the INFO level, false otherwise.
    */
   public boolean isInfoEnabled() {
-    return logger.isLoggable(Level.INFO);
+    return true;
   }
 
   /**
@@ -208,9 +179,7 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param msg - the message object to be logged
    */
   public void info(String msg) {
-    if (logger.isLoggable(Level.INFO)) {
-      log(SELF, Level.INFO, msg, null);
-    }
+    log(SELF, LogLevel.INFO, msg, null);
   }
 
   /**
@@ -222,10 +191,8 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param arg the argument
    */
   public void info(String format, Object arg) {
-    if (logger.isLoggable(Level.INFO)) {
-      FormattingTuple ft = MessageFormatter.format(format, arg);
-      log(SELF, Level.INFO, ft.getMessage(), ft.getThrowable());
-    }
+    FormattingTuple ft = MessageFormatter.format(format, arg);
+    log(SELF, LogLevel.INFO, ft.getMessage(), ft.getThrowable());
   }
 
   /**
@@ -238,10 +205,8 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param arg2 the second argument
    */
   public void info(String format, Object arg1, Object arg2) {
-    if (logger.isLoggable(Level.INFO)) {
-      FormattingTuple ft = MessageFormatter.format(format, arg1, arg2);
-      log(SELF, Level.INFO, ft.getMessage(), ft.getThrowable());
-    }
+    FormattingTuple ft = MessageFormatter.format(format, arg1, arg2);
+    log(SELF, LogLevel.INFO, ft.getMessage(), ft.getThrowable());
   }
 
   /**
@@ -253,10 +218,8 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param argArray an array of arguments
    */
   public void info(String format, Object... argArray) {
-    if (logger.isLoggable(Level.INFO)) {
-      FormattingTuple ft = MessageFormatter.arrayFormat(format, argArray);
-      log(SELF, Level.INFO, ft.getMessage(), ft.getThrowable());
-    }
+    FormattingTuple ft = MessageFormatter.arrayFormat(format, argArray);
+    log(SELF, LogLevel.INFO, ft.getMessage(), ft.getThrowable());
   }
 
   /**
@@ -266,9 +229,7 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param t the exception (throwable) to log
    */
   public void info(String msg, Throwable t) {
-    if (logger.isLoggable(Level.INFO)) {
-      log(SELF, Level.INFO, msg, t);
-    }
+    log(SELF, LogLevel.INFO, msg, t);
   }
 
   /**
@@ -277,7 +238,7 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @return True if this Logger is enabled for the WARNING level, false otherwise.
    */
   public boolean isWarnEnabled() {
-    return logger.isLoggable(Level.WARNING);
+    return true;
   }
 
   /**
@@ -286,9 +247,7 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param msg - the message object to be logged
    */
   public void warn(String msg) {
-    if (logger.isLoggable(Level.WARNING)) {
-      log(SELF, Level.WARNING, msg, null);
-    }
+    log(SELF, LogLevel.WARNING, msg, null);
   }
 
   /**
@@ -301,10 +260,8 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param arg the argument
    */
   public void warn(String format, Object arg) {
-    if (logger.isLoggable(Level.WARNING)) {
-      FormattingTuple ft = MessageFormatter.format(format, arg);
-      log(SELF, Level.WARNING, ft.getMessage(), ft.getThrowable());
-    }
+    FormattingTuple ft = MessageFormatter.format(format, arg);
+    log(SELF, LogLevel.WARNING, ft.getMessage(), ft.getThrowable());
   }
 
   /**
@@ -318,10 +275,8 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param arg2 the second argument
    */
   public void warn(String format, Object arg1, Object arg2) {
-    if (logger.isLoggable(Level.WARNING)) {
-      FormattingTuple ft = MessageFormatter.format(format, arg1, arg2);
-      log(SELF, Level.WARNING, ft.getMessage(), ft.getThrowable());
-    }
+    FormattingTuple ft = MessageFormatter.format(format, arg1, arg2);
+    log(SELF, LogLevel.WARNING, ft.getMessage(), ft.getThrowable());
   }
 
   /**
@@ -334,10 +289,8 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param argArray an array of arguments
    */
   public void warn(String format, Object... argArray) {
-    if (logger.isLoggable(Level.WARNING)) {
-      FormattingTuple ft = MessageFormatter.arrayFormat(format, argArray);
-      log(SELF, Level.WARNING, ft.getMessage(), ft.getThrowable());
-    }
+    FormattingTuple ft = MessageFormatter.arrayFormat(format, argArray);
+    log(SELF, LogLevel.WARNING, ft.getMessage(), ft.getThrowable());
   }
 
   /**
@@ -347,9 +300,7 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param t the exception (throwable) to log
    */
   public void warn(String msg, Throwable t) {
-    if (logger.isLoggable(Level.WARNING)) {
-      log(SELF, Level.WARNING, msg, t);
-    }
+    log(SELF, LogLevel.WARNING, msg, t);
   }
 
   /**
@@ -358,7 +309,7 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @return True if this Logger is enabled for level SEVERE, false otherwise.
    */
   public boolean isErrorEnabled() {
-    return logger.isLoggable(Level.SEVERE);
+    return true;
   }
 
   /**
@@ -367,9 +318,7 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param msg - the message object to be logged
    */
   public void error(String msg) {
-    if (logger.isLoggable(Level.SEVERE)) {
-      log(SELF, Level.SEVERE, msg, null);
-    }
+    log(SELF, LogLevel.ERROR, msg, null);
   }
 
   /**
@@ -382,10 +331,8 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param arg the argument
    */
   public void error(String format, Object arg) {
-    if (logger.isLoggable(Level.SEVERE)) {
-      FormattingTuple ft = MessageFormatter.format(format, arg);
-      log(SELF, Level.SEVERE, ft.getMessage(), ft.getThrowable());
-    }
+    FormattingTuple ft = MessageFormatter.format(format, arg);
+    log(SELF, LogLevel.ERROR, ft.getMessage(), ft.getThrowable());
   }
 
   /**
@@ -399,10 +346,8 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param arg2 the second argument
    */
   public void error(String format, Object arg1, Object arg2) {
-    if (logger.isLoggable(Level.SEVERE)) {
-      FormattingTuple ft = MessageFormatter.format(format, arg1, arg2);
-      log(SELF, Level.SEVERE, ft.getMessage(), ft.getThrowable());
-    }
+    FormattingTuple ft = MessageFormatter.format(format, arg1, arg2);
+    log(SELF, LogLevel.ERROR, ft.getMessage(), ft.getThrowable());
   }
 
   /**
@@ -415,10 +360,8 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param arguments an array of arguments
    */
   public void error(String format, Object... arguments) {
-    if (logger.isLoggable(Level.SEVERE)) {
-      FormattingTuple ft = MessageFormatter.arrayFormat(format, arguments);
-      log(SELF, Level.SEVERE, ft.getMessage(), ft.getThrowable());
-    }
+    FormattingTuple ft = MessageFormatter.arrayFormat(format, arguments);
+    log(SELF, LogLevel.ERROR, ft.getMessage(), ft.getThrowable());
   }
 
   /**
@@ -428,114 +371,58 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
    * @param t the exception (throwable) to log
    */
   public void error(String msg, Throwable t) {
-    if (logger.isLoggable(Level.SEVERE)) {
-      log(SELF, Level.SEVERE, msg, t);
-    }
+    log(SELF, LogLevel.ERROR, msg, t);
   }
 
   /**
    * Log the message at the specified level with the specified throwable if any. This method creates
    * a LogRecord and fills in caller date before calling this instance's JDK14 logger.
-   *
-   * <p>See bug report #13 for more details.
-   *
-   * @param level
-   * @param msg
-   * @param t
    */
-  private void log(String callerFQCN, Level level, String msg, Throwable t) {
-    // millis and thread are filled by the constructor
-    LogRecord record = new LogRecord(level, msg);
-    record.setLoggerName(getName());
-    record.setThrown(t);
-    // Note: parameters in record are not set because SLF4J only
-    // supports a single formatting style
-    fillCallerData(callerFQCN, record);
-    logger.log(record);
+  private void log(String callerFQCN, LogLevel level, String msg, Throwable t) {
+    log(level, msg, t);
   }
 
   /**
-   * Fill in caller data if possible.
-   *
-   * @param record The record to update
+   * Log the message at the specified level with the specified throwable if any. This method creates
+   * a LogRecord and fills in caller date before calling this instance's JDK14 logger.
    */
-  private final void fillCallerData(String callerFQCN, LogRecord record) {
-    StackTraceElement[] steArray = new Throwable().getStackTrace();
-
-    int selfIndex = -1;
-    for (int i = 0; i < steArray.length; i++) {
-      final String className = steArray[i].getClassName();
-      if (className.equals(callerFQCN) || className.equals(SUPER)) {
-        selfIndex = i;
-        break;
-      }
-    }
-
-    int found = -1;
-    for (int i = selfIndex + 1; i < steArray.length; i++) {
-      final String className = steArray[i].getClassName();
-      if (!(className.equals(callerFQCN) || className.equals(SUPER))) {
-        found = i;
-        break;
-      }
-    }
-
-    if (found != -1) {
-      StackTraceElement ste = steArray[found];
-      // setting the class name has the side effect of setting
-      // the needToInferCaller variable to false.
-      record.setSourceClassName(ste.getClassName());
-      record.setSourceMethodName(ste.getMethodName());
-    }
+  private void log(LogLevel level, String msg, Throwable t) {
+    logger.log(level, msg, t);
   }
 
   public void log(
       Marker marker, String callerFQCN, int level, String message, Object[] argArray, Throwable t) {
-    Level julLevel = slf4jLevelIntToJULLevel(level);
-    // the logger.isLoggable check avoids the unconditional
-    // construction of location data for disabled log
-    // statements. As of 2008-07-31, callers of this method
-    // do not perform this check. See also
-    // http://jira.qos.ch/browse/SLF4J-81
-    if (logger.isLoggable(julLevel)) {
-      log(callerFQCN, julLevel, message, t);
-    }
+    LogLevel nukkitLevel = slf4jLevelIntToNukkitLevel(level);
+    log(nukkitLevel, message, t);
   }
 
-  private Level slf4jLevelIntToJULLevel(int slf4jLevelInt) {
-    Level julLevel;
+  private LogLevel slf4jLevelIntToNukkitLevel(int slf4jLevelInt) {
+    LogLevel nukkitLevel;
     switch (slf4jLevelInt) {
       case LocationAwareLogger.TRACE_INT:
-        julLevel = Level.FINEST;
+        nukkitLevel = LogLevel.DEBUG;
         break;
       case LocationAwareLogger.DEBUG_INT:
-        julLevel = Level.FINE;
+        nukkitLevel = LogLevel.DEBUG;
         break;
       case LocationAwareLogger.INFO_INT:
-        julLevel = Level.INFO;
+        nukkitLevel = LogLevel.INFO;
         break;
       case LocationAwareLogger.WARN_INT:
-        julLevel = Level.WARNING;
+        nukkitLevel = LogLevel.WARNING;
         break;
       case LocationAwareLogger.ERROR_INT:
-        julLevel = Level.SEVERE;
+        nukkitLevel = LogLevel.ERROR;
         break;
       default:
         throw new IllegalStateException("Level number " + slf4jLevelInt + " is not recognized.");
     }
-    return julLevel;
+    return nukkitLevel;
   }
 
   /** @since 1.7.15 */
   public void log(LoggingEvent event) {
-    Level julLevel = slf4jLevelIntToJULLevel(event.getLevel().toInt());
-    if (logger.isLoggable(julLevel)) {
-      LogRecord record = eventToRecord(event, julLevel);
-      logger.log(record);
-    }
-  }
-
-  private LogRecord eventToRecord(LoggingEvent event, Level julLevel) {
+    LogLevel nukkitLevel = slf4jLevelIntToNukkitLevel(event.getLevel().toInt());
     String format = event.getMessage();
     Object[] arguments = event.getArgumentArray();
     FormattingTuple ft = MessageFormatter.arrayFormat(format, arguments);
@@ -544,20 +431,12 @@ public final class NukkitLoggerAdapter extends MarkerIgnoringBase implements Loc
           "both last element in argument array and last argument are of type Throwable");
     }
 
-    Throwable t = event.getThrowable();
     if (ft.getThrowable() != null) {
       // ??? Taken from the original. No idea why that code is like that...
       // t = ft.getThrowable();
       throw new IllegalStateException("fix above code");
     }
 
-    LogRecord record = new LogRecord(julLevel, ft.getMessage());
-    record.setLoggerName(event.getLoggerName());
-    record.setMillis(event.getTimeStamp());
-    record.setSourceClassName(EventConstants.NA_SUBST);
-    record.setSourceMethodName(EventConstants.NA_SUBST);
-
-    record.setThrown(t);
-    return record;
+    log(nukkitLevel, ft.getMessage(), event.getThrowable());
   }
 }

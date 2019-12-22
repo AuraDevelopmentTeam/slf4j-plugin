@@ -6,11 +6,11 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/95e8a2fe7c7f47fd8b12462012c4135e)](https://www.codacy.com/manual/AuraDevelopmentTeam/slf4j-plugin?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AuraDevelopmentTeam/slf4j-plugin&amp;utm_campaign=Badge_Grade)
 [![License](https://img.shields.io/github/license/AuraDevelopmentTeam/slf4j-plugin.svg)](https://github.com/AuraDevelopmentTeam/slf4j-plugin/blob/master/LICENSE)
 
-A SLF4J logging implementation for the Bungeecord and Bukkit/Spigot platforms.
+A SLF4J logging implementation for the Bungeecord, Bukkit/Spigot and Nukkit platforms.
 
 The motivation is quite simple:  
-When using SLF4J on either Bungeecord or Spigot/Bukkit even adding the jdk14 adapter doesn't work properly. Instead we need a specialized adapter for each
-platform. And that is exactly what this is.
+When using SLF4J on either Bungeecord, Nukkit or Spigot/Bukkit even adding the jdk14 adapter doesn't work properly. Instead we need a specialized adapter for
+each platform. And that is exactly what this is.
 
 ## Table of Contents
 
@@ -58,8 +58,8 @@ the appropriate edition for your platform and `{version}` with the appropriate v
 
 <dependencies>
     <dependency>
-        <groupId>team.aura_dev.lib.slf4j-plugin.{bungeecord|spigot}</groupId>
-        <artifactId>slf4j-plugin-{bungeecord|spigot}</artifactId>
+        <groupId>team.aura_dev.lib.slf4j-plugin.{bungeecord|nukkit|spigot}</groupId>
+        <artifactId>slf4j-plugin-{bungeecord|nukkit|spigot}</artifactId>
         <version>{version}</version>
 				<classifier>1.7.25</classifier>
         <scope>compile</scope>
@@ -79,7 +79,7 @@ repositories {
 }
 
 dependencies {
-    compile "team.aura_dev.lib.slf4j-plugin.{bungeecord|spigot}:slf4j-plugin-{bungeecord|spigot}:{version}:1.7.25"
+    compile "team.aura_dev.lib.slf4j-plugin.{bungeecord|nukkit|spigot}:slf4j-plugin-{bungeecord|nukkit|spigot}:{version}:1.7.25"
 }
 ```
 
