@@ -7,7 +7,7 @@ repositories {
 }
 
 dependencies {
-    compile "org.slf4j:slf4j-api:${rootProject.slf4j_version}"
+    api "org.slf4j:slf4j-api:${rootProject.slf4j_version}"
 }
 
 processSources {
