@@ -16,6 +16,10 @@ processResources {
     onlyIf { false }
 }
 
+delombok {
+    onlyIf { false }
+}
+
 tasks.withType(JavaCompile) {
     onlyIf { false }
 }
