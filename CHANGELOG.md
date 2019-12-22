@@ -1,3 +1,9 @@
+Version 1.2.0
+-------------
+
+\+ Added support for Nukkit.  
+
+
 Version 1.1.1
 -------------
 
